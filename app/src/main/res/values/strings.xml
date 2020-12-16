@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lepaking-System</string>
+    <string name="tab_text_1">Checkin</string>
+    <string name="tab_text_2">Search</string>
+    <string name="tab_text_3">Payment</string>
+    <string name="tab_text_4">Profile</string>
+</resources>
