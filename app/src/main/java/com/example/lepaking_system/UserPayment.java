@@ -15,4 +15,8 @@ public class UserPayment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_userpayment, container, false);
     }
+    //New comment menu
+    //Woiiii
+    //AAAASDSDSDSDA
+    //www
 }
