@@ -16,3 +16,5 @@ public class UserSearch extends Fragment {
         return inflater.inflate(R.layout.fragment_usersearch, container, false);
     }
 }
+
+//restaurant testing
