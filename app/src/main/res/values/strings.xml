@@ -24,6 +24,10 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="phone_number">Phone Number</string>
+    <string-array name="gender">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
     <string-array name="state">
         <item>Pulau Pinang</item>
         <item>Melaka</item>

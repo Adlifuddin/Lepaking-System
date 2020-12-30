@@ -32,8 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 public class UserProfile extends Fragment {
 
     private TextView outName1;
-    private EditText outName2, outEmail, outIC, outGender, outPhone, outStreet, outPoscode, outCity; //initialize edit text
-    private Spinner outState;
+    private EditText outName2, outEmail, outIC, outPhone, outStreet, outPoscode, outCity; //initialize edit text
+    private Spinner outGender, outState;
     private Button editButton, settingButton, logoutButton; //initialize button
     private Boolean status = true;
 
@@ -95,9 +95,6 @@ public class UserProfile extends Fragment {
                 outIC.setText(ic);
                 outIC.setFocusable(false);
 
-                outGender.setText(gender);
-                outGender.setFocusable(false);
-
                 outPhone.setText(mobileNo);
                 outPhone.setFocusable(false);
 
@@ -109,6 +106,15 @@ public class UserProfile extends Fragment {
 
                 outCity.setText(city);
                 outCity.setFocusable(false);
+
+                if(gender.equals("male")){
+                    outGender.setSelection(0);
+                }
+                else if(gender.equals("female")){
+                    outGender.setSelection(1);
+                }
+
+                outGender.setEnabled(false);
 
                 if(state.equals("Pulau Pinang")){
                     outState.setSelection(0);
@@ -200,7 +206,7 @@ public class UserProfile extends Fragment {
                     outName2.setFocusableInTouchMode(true);
                     outEmail.setFocusableInTouchMode(true);
                     outIC.setFocusableInTouchMode(true);
-                    outGender.setFocusableInTouchMode(true);
+                    outGender.setEnabled(true);
                     outPhone.setFocusableInTouchMode(true);
                     outStreet.setFocusableInTouchMode(true);
                     outPoscode.setFocusableInTouchMode(true);
@@ -214,7 +220,7 @@ public class UserProfile extends Fragment {
                     String enteredName = (String) outName2.getText().toString();
                     String enteredIC = (String) outIC.getText().toString();
                     String enteredMobile = (String) outPhone.getText().toString();
-                    String enteredGender = (String) outGender.getText().toString();
+                    String enteredGender = (String) outGender.getSelectedItem().toString();
                     String enteredStreetName = (String) outStreet.getText().toString();
                     String enteredPoscode = (String) outPoscode.getText().toString();
                     String enteredCity = (String) outCity.getText().toString();
@@ -241,7 +247,7 @@ public class UserProfile extends Fragment {
                     outName2.setFocusable(false);
                     outEmail.setFocusable(false);
                     outIC.setFocusable(false);
-                    outGender.setFocusable(false);
+                    outGender.setEnabled(false);
                     outPhone.setFocusable(false);
                     outStreet.setFocusable(false);
                     outPoscode.setFocusable(false);
