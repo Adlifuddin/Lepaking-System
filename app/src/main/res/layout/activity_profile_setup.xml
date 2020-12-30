@@ -10,26 +10,26 @@
         android:id="@+id/profileSetupPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50px">
+        android:paddingBottom="50dp">
 
         <Button
             android:id="@+id/finishButton"
-            android:layout_width="325dp"
+            android:layout_width="331dp"
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
-            android:background="#17267A"
-            android:text="Finish"
+            android:background="@drawable/custom_button"
+            android:text="@string/finish"
             android:textColor="#FFFEFE"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/StateName" />
+            app:layout_constraintTop_toBottomOf="@+id/state" />
 
         <TextView
             android:id="@+id/profileText"
             android:layout_width="182dp"
             android:layout_height="32dp"
-            android:text="Profile Set Up"
+            android:text="@string/profile_set_up"
             android:textAlignment="center"
             android:textSize="26sp"
             app:layout_constraintBottom_toTopOf="@+id/guidelineBot"
@@ -44,12 +44,13 @@
             android:layout_width="83dp"
             android:layout_height="28dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
-            android:text="Gender"
+            android:layout_marginTop="36dp"
+            android:text="@string/gender"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/radioGroup"
+            app:layout_constraintHorizontal_bias="0.639"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/userName" />
 
@@ -57,8 +58,8 @@
             android:id="@+id/addressText"
             android:layout_width="83dp"
             android:layout_height="28dp"
-            android:layout_marginTop="16dp"
-            android:text="Address"
+            android:layout_marginTop="48dp"
+            android:text="@string/address"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textSize="18sp"
@@ -70,14 +71,15 @@
 
         <EditText
             android:id="@+id/userName"
-            android:layout_width="325dp"
+            android:layout_width="331dp"
             android:layout_height="45dp"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="@string/name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            android:background="@drawable/custom_input"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintHorizontal_bias="0.422"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
@@ -85,14 +87,15 @@
 
         <EditText
             android:id="@+id/streetName"
-            android:layout_width="325dp"
+            android:layout_width="331dp"
             android:layout_height="45dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
-            android:hint="Street Name"
+            android:hint="@string/street_name"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            android:background="@drawable/custom_input"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
@@ -100,33 +103,19 @@
 
         <EditText
             android:id="@+id/cityName"
-            android:layout_width="325dp"
+            android:layout_width="331dp"
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="City"
+            android:hint="@string/city"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:textAlignment="center"
+            android:background="@drawable/custom_input"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
             app:layout_constraintTop_toBottomOf="@+id/poscodeNumber" />
-
-        <EditText
-            android:id="@+id/StateName"
-            android:layout_width="325dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="State"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
         <EditText
             android:id="@+id/icNumber"
@@ -134,27 +123,31 @@
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Identification Number"
+            android:hint="@string/identification_number"
             android:inputType="number"
             android:textAlignment="center"
+            android:background="@drawable/custom_input"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            android:autofillHints="no" />
 
         <EditText
             android:id="@+id/poscodeNumber"
             android:layout_width="331dp"
             android:layout_height="45dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/custom_input"
             android:ems="10"
-            android:hint="Poscode"
+            android:hint="@string/poscode"
             android:inputType="number"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.458"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/streetName" />
+            app:layout_constraintTop_toBottomOf="@+id/streetName"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/phoneNumber"
@@ -162,34 +155,36 @@
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="number"
+            android:hint="@string/phone_number"
+            android:inputType="phone"
             android:textAlignment="center"
+            android:background="@drawable/custom_input"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-            app:layout_constraintTop_toBottomOf="@+id/icNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/icNumber"
+            android:importantForAutofill="no" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="206dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="28dp"
+            android:layout_width="162dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="44dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
             app:layout_constraintTop_toBottomOf="@+id/userName">
 
             <RadioButton
                 android:id="@+id/maleOption"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:text="Male" />
+                android:layout_width="73dp"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/femaleOption"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:text="Female" />
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
 
         </RadioGroup>
 
@@ -224,6 +219,21 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="715dp"
             app:layout_constraintGuide_percent="0.95" />
+
+        <Spinner
+            android:id="@+id/state"
+            android:layout_width="331dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="12dp"
+
+            android:background="@drawable/custom_spinner"
+            android:entries="@array/state"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -17,11 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileSetupActivity"/>
+        <activity android:name=".UserUpdateActivity"/>
         <activity android:name=".SignupActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.LepakingSystem.NoActionBar">
+            android:theme="@style/Theme.LepakingSystem.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

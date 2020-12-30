@@ -2,6 +2,45 @@
     <string name="app_name">Lepaking-System</string>
     <string name="tab_text_1">Checkin</string>
     <string name="tab_text_2">Search</string>
-    <string name="tab_text_3">Payment</string>
-    <string name="tab_text_4">Profile</string>
+    <string name="tab_text_3">Menu</string>
+    <string name="tab_text_4">Payment</string>
+    <string name="tab_text_5">Profile</string>
+    <string name="lepaking">Lepaking</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="not_yet_register">Not yet register?</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="profile_set_up">Profile Set Up</string>
+    <string name="gender">Gender</string>
+    <string name="address">Address</string>
+    <string name="name">Name</string>
+    <string name="street_name">Street Name</string>
+    <string name="city">City</string>
+    <string name="identification_number">Identification Number</string>
+    <string name="poscode">Poscode</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="phone_number">Phone Number</string>
+    <string-array name="state">
+        <item>Pulau Pinang</item>
+        <item>Melaka</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Johor</item>
+        <item>Kedah</item>
+        <item>Kelantan</item>
+        <item>Negeri Sembilan</item>
+        <item>Pahang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Selangor</item>
+        <item>Terengganu</item>
+        <item>Kuala Lumpur</item>
+        <item>Labuan</item>
+        <item>Putrajaya</item>
+    </string-array>
+
 </resources>

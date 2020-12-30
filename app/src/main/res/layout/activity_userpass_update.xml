@@ -2,56 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/signupPage"
+    android:id="@+id/updatePassPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/signupText"
-        android:layout_width="245dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="60dp"
-        android:fontFamily="serif"
-        android:text="@string/sign_up"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textSize="45sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineBot"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.064" />
 
     <EditText
-        android:id="@+id/newEmail"
+        android:id="@+id/oldPassword"
         android:layout_width="338dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_email_icon"
-        android:ems="10"
-        android:hint="@string/email"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@+id/signupText" />
-
-    <EditText
-        android:id="@+id/newPassword"
-        android:layout_width="338dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_lock_icon"
         android:ems="10"
-        android:hint="@string/password"
+        android:hint="Old Password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:paddingStart="12dp"
@@ -60,15 +24,34 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@+id/newEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <EditText
+        android:id="@+id/newPassword"
+        android:layout_width="338dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_lock_icon"
+        android:ems="10"
+        android:hint="New Password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/oldPassword" />
 
     <Button
-        android:id="@+id/nextButton"
+        android:id="@+id/confirmButton"
         android:layout_width="341dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
-        android:text="@string/next"
+        android:text="Confirm"
         android:textColor="#FFFEFE"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.517"
@@ -96,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_begin="66dp"
         app:layout_constraintGuide_percent="0.05" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -106,5 +89,16 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="715dp"
         app:layout_constraintGuide_percent="0.95" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_arrow_back"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

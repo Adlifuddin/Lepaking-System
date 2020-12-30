@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "458414123388",
+    "project_id": "lepaksystemdb",
+    "storage_bucket": "lepaksystemdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458414123388:android:9f91156080cc8115025cf9",
+        "android_client_info": {
+          "package_name": "com.example.Lepaking_System"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458414123388-bpe0atii04fru15nr4cnhd18k3d4h7ki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNk0kQslW_VNXF6DZdv9lwrXN_SoYHzBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458414123388-bpe0atii04fru15nr4cnhd18k3d4h7ki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.lepaking_system.R;
 import com.example.lepaking_system.UserCheckin;
+import com.example.lepaking_system.UserMenu;
 import com.example.lepaking_system.UserPayment;
 import com.example.lepaking_system.UserProfile;
 import com.example.lepaking_system.UserSearch;
@@ -20,8 +21,11 @@ import com.example.lepaking_system.UserSearch;
  */
 public class  SectionsPagerAdapter extends FragmentPagerAdapter {
 
+    /*
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4, R.string.tab_text_5};
+    */
+
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -38,24 +42,27 @@ public class  SectionsPagerAdapter extends FragmentPagerAdapter {
                     break;
             case 1: fragment = new UserSearch();
                     break;
-            case 2: fragment = new UserPayment();
+            case 2: fragment = new UserMenu();
                 break;
-            case 3: fragment = new UserProfile();
+            case 3: fragment = new UserPayment();
+                break;
+            case 4: fragment = new UserProfile();
                 break;
         }
 
         return fragment;
     }
 
+    /*
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return mContext.getResources().getString(TAB_TITLES[position]);
-    }
+    } */
 
     @Override
     public int getCount() {
         // Number of pages to be shown
-        return 4;
+        return 5;
     }
 }
