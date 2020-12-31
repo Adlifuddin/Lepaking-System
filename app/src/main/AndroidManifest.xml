@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LepakingSystem">
+        <activity android:name=".restaurant.activity.RestaurantMainActivity"
+            android:theme="@style/Theme.LepakingSystem.NoActionBar">
+        </activity>
+        <activity android:name=".restaurant.activity.SignUpRestaurant" />
+        <activity android:name=".restaurant.activity.LoginRestaurant" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,15 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileSetupActivity"/>
-        <activity android:name=".UserUpdateActivity"/>
+        <activity android:name=".ProfileSetupActivity" />
+        <activity android:name=".UserUpdateActivity" />
         <activity android:name=".SignupActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.LepakingSystem.NoActionBar"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>
