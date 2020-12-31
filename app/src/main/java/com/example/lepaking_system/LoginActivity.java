@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lepaking_system.restaurant.activity.LoginRestaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginButton; //initialize button
+    private Button restaurantButton;
     private EditText inputEmail, inputPass; //initialize edittext
     private TextView signupLink; //initialize textview
 
@@ -35,6 +37,17 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         userAuth = FirebaseAuth.getInstance();
+
+        //restaurant button function
+        restaurantButton = findViewById(R.id.restaurantButton);
+        restaurantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, LoginRestaurant.class);
+                startActivity(intent);
+            }
+        });
+
 
         //login button function
         loginButton = (Button) findViewById(R.id.signinButton);

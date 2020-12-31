@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Profile">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_my_profile"
+                    android:icon="@drawable/ic_restaurant_profile"
+                    android:title="My Profile" />
+
+                <item
+                    android:id="@+id/nav_update_profile"
+                    android:icon="@drawable/ic_restaurant_update_profile"
+                    android:title="Update Profile" />
+            </menu>
+
+        </item>
+
+        <item android:title="Menu">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_show_menu"
+                    android:icon="@drawable/ic_restaurant_menu"
+                    android:title="Show Menu" />
+
+                <item
+                    android:id="@+id/nav_add_menu"
+                    android:icon="@drawable/ic_restaurant_add_menu"
+                    android:title="Add Menu" />
+            </menu>
+
+        </item>
+
+        <item android:title="Validation">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_validate_customer"
+                    android:icon="@drawable/ic_restaurant_validate_customer"
+                    android:title="Validate Customer" />
+
+                <item
+                    android:id="@+id/nav_validate_payment"
+                    android:icon="@drawable/ic_restaurant_validate_payment"
+                    android:title="Validate Payment" />
+
+                <item
+                    android:id="@+id/nav_customer_tracing"
+                    android:icon="@drawable/ic_restaurant_customer_tracing"
+                    android:title="Customer Tracing" />
+            </menu>
+
+        </item>
+
+    </group>
+
+    <item android:title="Log Out">
+
+        <menu>
+            <item
+                android:id="@+id/nav_log_out"
+                android:icon="@drawable/ic_logout"
+                android:title="Log Out" />
+        </menu>
+
+    </item>
+
+</menu>
