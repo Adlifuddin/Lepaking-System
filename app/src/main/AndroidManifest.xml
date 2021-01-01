@@ -9,9 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LepakingSystem">
-        <activity android:name=".restaurant.activity.RestaurantMainActivity"
-            android:theme="@style/Theme.LepakingSystem.NoActionBar">
-        </activity>
+        <activity android:name=".restaurant.activity.CustomerTracing"></activity>
+        <activity android:name=".restaurant.activity.UpdateMenuRestaurant" />
+        <activity
+            android:name=".restaurant.activity.CaptureAct"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".restaurant.activity.RestaurantMainActivity"
+            android:theme="@style/Theme.LepakingSystem.NoActionBar" />
         <activity android:name=".restaurant.activity.SignUpRestaurant" />
         <activity android:name=".restaurant.activity.LoginRestaurant" />
         <activity android:name=".LoginActivity">
