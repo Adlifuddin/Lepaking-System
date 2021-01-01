@@ -30,6 +30,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
     private RadioButton option; //initialize radio button
 
     DatabaseReference custDb; //initialize database reference to connect with firebase realtime database
+    DatabaseReference custRecDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
     //function to add student in firebase database
     private void addCustomer() {
 
+        //Add Customer
         custDb = FirebaseDatabase.getInstance().getReference("Customer");
 
         int radioID = gender.getCheckedRadioButtonId(); //to save radio id
@@ -90,10 +92,34 @@ public class ProfileSetupActivity extends AppCompatActivity {
             //save student in firebase
             custDb.child(id).setValue(customer);
 
+            //Add recommendation customer
+            custRecDb = FirebaseDatabase.getInstance().getReference("Recommendation_Customer").child(id);
+
+            custRecDb.child("P1").child("rating").setValue("0");
+            custRecDb.child("P1").child("restaurant_number").setValue("0");
+
+            custRecDb.child("P2").child("rating").setValue("0");
+            custRecDb.child("P2").child("restaurant_number").setValue("0");
+
+            custRecDb.child("P3").child("rating").setValue("0");
+            custRecDb.child("P3").child("restaurant_number").setValue("0");
+
+            custRecDb.child("T1").child("rating").setValue("0");
+            custRecDb.child("T1").child("restaurant_number").setValue("0");
+
+            custRecDb.child("T2").child("rating").setValue("0");
+            custRecDb.child("T2").child("restaurant_number").setValue("0");
+
+            custRecDb.child("T3").child("rating").setValue("0");
+            custRecDb.child("T3").child("restaurant_number").setValue("0");
+
+            custRecDb.child("T4").child("rating").setValue("0");
+            custRecDb.child("T4").child("restaurant_number").setValue("0");
+
             //display toast
-            Toast.makeText(this, "Profile Complete", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Profile Success", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Profile Incomplete", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Profile Error", Toast.LENGTH_LONG).show();
         }
     }
 

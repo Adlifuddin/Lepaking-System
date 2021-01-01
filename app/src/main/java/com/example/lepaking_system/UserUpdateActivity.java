@@ -44,32 +44,38 @@ public class UserUpdateActivity extends AppCompatActivity {
                 newPass = (EditText) findViewById(R.id.newPassword);
                 String enteredNewPass = (String) newPass.getText().toString();
 
-                FirebaseAuth userAuth = FirebaseAuth.getInstance();
-                userAuth.signInWithEmailAndPassword(cust.getEmail(), enteredOldPass)
-                        .addOnCompleteListener(UserUpdateActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                //when successfull
-                                if(task.isSuccessful()){
-                                    cust.updatePassword(enteredNewPass).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
-                                                Toast.makeText(UserUpdateActivity.this, "Password Updated", Toast.LENGTH_SHORT).show(); //display sucess
-                                                openProfile();
+                boolean validateOldPass = oldPassValidation(enteredOldPass);
+                boolean validateNewPass = newPassValidation(enteredNewPass);
+
+                if(validateOldPass && validateNewPass){
+
+                    FirebaseAuth userAuth = FirebaseAuth.getInstance();
+                    userAuth.signInWithEmailAndPassword(cust.getEmail(), enteredOldPass)
+                            .addOnCompleteListener(UserUpdateActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    //when successfull
+                                    if(task.isSuccessful()){
+                                        cust.updatePassword(enteredNewPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    Toast.makeText(UserUpdateActivity.this, "Password Updated", Toast.LENGTH_SHORT).show(); //display sucess
+                                                    openProfile();
+                                                }
+                                                else{
+                                                    Toast.makeText(UserUpdateActivity.this, "Fail Update", Toast.LENGTH_SHORT).show(); //display sucess
+                                                }
                                             }
-                                            else{
-                                                Toast.makeText(UserUpdateActivity.this, "Fail Update", Toast.LENGTH_SHORT).show(); //display sucess
-                                            }
-                                        }
-                                    });
+                                        });
+                                    }
+                                    //when unsuccessfull
+                                    else{
+                                        Toast.makeText(UserUpdateActivity.this, "Wrong Old Password", Toast.LENGTH_SHORT).show(); //display error
+                                    }
                                 }
-                                //when unsuccessfull
-                                else{
-                                    Toast.makeText(UserUpdateActivity.this, "Wrong Old Password", Toast.LENGTH_SHORT).show(); //display error
-                                }
-                            }
-                        });
+                            });
+                }
             }
         });
 
@@ -88,5 +94,43 @@ public class UserUpdateActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("viewpager_position", 4);
         startActivity(intent);
+    }
+
+    //function for old password validation
+    public Boolean oldPassValidation(String enteredPass){
+        boolean test = true;
+        if(enteredPass.isEmpty()){
+            oldPass.setError("Password Field cannot be empty");
+            test = false;
+        }
+        else if(enteredPass.length() < 8){
+            oldPass.setError("Password must be atleast 8 characters");
+            test = false;
+        }
+        else{
+            oldPass.setError(null);
+            test=true;
+        }
+
+        return test;
+    }
+
+    //function for new password validation
+    public Boolean newPassValidation(String enteredPass){
+        boolean test = true;
+        if(enteredPass.isEmpty()){
+            newPass.setError("Password Field cannot be empty");
+            test = false;
+        }
+        else if(enteredPass.length() < 8){
+            newPass.setError("Password must be atleast 8 characters");
+            test = false;
+        }
+        else{
+            newPass.setError(null);
+            test=true;
+        }
+
+        return test;
     }
 }

@@ -56,8 +56,8 @@ public class UserCheckin extends Fragment {
                 String city = dataSnapshot.child("city").getValue().toString();
                 String state = dataSnapshot.child("state").getValue().toString();
 
-                String custData = id + "," + email + "," + name + "," + mobileNo + "," + streetName + "," + poscode + ","
-                        + city + "," + state;
+                String custData = id + ";" + email + ";" + name + ";" + mobileNo + ";" + streetName + ";" + poscode + ";"
+                        + city + ";" + state;
                 QRGEncoder qrgEncoder = new QRGEncoder(custData, null, QRGContents.Type.TEXT, 500);
                 // Getting QR-Code as Bitmap
                 Bitmap bitmap = qrgEncoder.getBitmap();
