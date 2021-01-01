@@ -14,7 +14,15 @@ import android.widget.Toast;
 import com.example.lepaking_system.R;
 import com.example.lepaking_system.restaurant.conversion.AESCrypt;
 import com.example.lepaking_system.restaurant.conversion.Email;
+import com.example.lepaking_system.restaurant.model.Cheap;
+import com.example.lepaking_system.restaurant.model.Chinese;
+import com.example.lepaking_system.restaurant.model.Expensive;
+import com.example.lepaking_system.restaurant.model.Indian;
+import com.example.lepaking_system.restaurant.model.Malay;
+import com.example.lepaking_system.restaurant.model.Moderate;
 import com.example.lepaking_system.restaurant.model.Restaurant;
+import com.example.lepaking_system.restaurant.model.Total;
+import com.example.lepaking_system.restaurant.model.Western;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -75,7 +83,7 @@ public class SignUpRestaurant extends AppCompatActivity {
         menuPriceRangeSelection.setAdapter(arrayMenuPriceRangeAdapter);
 
         //type range option
-        String[] typeOption = {"Chinese", "Indian", "Malay", "Western"};
+        String[] typeOption = {"Chinese", "Malay", "Indian", "Western"};
 
         ArrayAdapter arrayTypeAdapter = new ArrayAdapter(this, R.layout.option_for_restaurant, typeOption);
         //to make default value
@@ -112,9 +120,10 @@ public class SignUpRestaurant extends AppCompatActivity {
 
         //Variables for firebase database
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("Restaurant");
+        DatabaseReference referenceRestaurant = rootNode.getReference("Restaurant");
+        DatabaseReference referenceRecommendationRestaurant = rootNode.getReference("recommendation_restaurant");
 
-        Query isRestaurantEmailTaken = reference.orderByChild("email").equalTo(Email.encodeEmail(email));
+        Query isRestaurantEmailTaken = referenceRestaurant.orderByChild("email").equalTo(Email.encodeEmail(email));
 
         //check if entered email has been taken, if yes, ask user to reenter, if no, sign up successful.
 
@@ -127,7 +136,7 @@ public class SignUpRestaurant extends AppCompatActivity {
                 } else {
                     //Get all the values
 
-                    String id = reference.push().getKey();
+                    String id = referenceRestaurant.push().getKey();
                     String name = restaurantName.getEditText().getText().toString();
                     String email = Email.encodeEmail(restaurantEmail.getEditText().getText().toString());
                     String password = restaurantPassword.getEditText().getText().toString();
@@ -141,13 +150,75 @@ public class SignUpRestaurant extends AppCompatActivity {
                     int customerCounter = 0;
                     int menuCounter = 0;
 
+                    String cheap = "P1";
+                    String moderate = "P2";
+                    String expensive = "P3";
+                    String chinese = "T1";
+                    String malay = "T2";
+                    String indian = "T3";
+                    String western = "T4";
+                    String r = "R";
+                    String total = "Total";
+
+                    Cheap cheapRating = new Cheap(0);
+                    Moderate moderateRating = new Moderate(0);
+                    Expensive expensiveRating = new Expensive(0);
+                    Chinese chineseRating = new Chinese(0);
+                    Malay malayRating = new Malay(0);
+                    Indian indianRating = new Indian(0);
+                    Western westernRating = new Western(0);
+                    com.example.lepaking_system.restaurant.model.R rValue = new com.example.lepaking_system.restaurant.model.R(0);
+                    Total totalValue = new Total(0);
+
+                    referenceRecommendationRestaurant.child(email).child(cheap).setValue(cheapRating);
+                    referenceRecommendationRestaurant.child(email).child(moderate).setValue(moderateRating);
+                    referenceRecommendationRestaurant.child(email).child(expensive).setValue(expensiveRating);
+                    referenceRecommendationRestaurant.child(email).child(chinese).setValue(chineseRating);
+                    referenceRecommendationRestaurant.child(email).child(malay).setValue(malayRating);
+                    referenceRecommendationRestaurant.child(email).child(indian).setValue(indianRating);
+                    referenceRecommendationRestaurant.child(email).child(western).setValue(westernRating);
+                    referenceRecommendationRestaurant.child(email).child(r).setValue(rValue);
+                    referenceRecommendationRestaurant.child(email).child(total).setValue(totalValue);
+
                     Restaurant addNewRestaurant = new Restaurant();
                     try {
                         addNewRestaurant = new Restaurant(id, name, email, AESCrypt.encrypt(password), phoneNumber, streetName, postcode, city, state, customerCounter, menuCounter, menuPriceRange, type);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    reference.child(email).setValue(addNewRestaurant);
+                    referenceRestaurant.child(email).setValue(addNewRestaurant);
+
+                    System.out.println(menuPriceRange);
+
+                    if(menuPriceRange.equals("Cheap")){
+                        cheapRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(cheap).setValue(cheapRating);
+                    }
+                    else if(menuPriceRange.equals("Moderate")){
+                        moderateRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(moderate).setValue(moderateRating);
+                    }
+                    else if(menuPriceRange.equals("Expensive")){
+                        expensiveRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(expensive).setValue(expensiveRating);
+                    }
+
+                    if(type.equals("Chinese")){
+                        chineseRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(chinese).setValue(chineseRating);
+                    }
+                    else if(type.equals("Malay")){
+                        malayRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(malay).setValue(malayRating);
+                    }
+                    else if(type.equals("Indian")){
+                        indianRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(indian).setValue(indianRating);
+                    }
+                    else if(type.equals("Western")){
+                        westernRating.setRating(1);
+                        referenceRecommendationRestaurant.child(email).child(western).setValue(westernRating);
+                    }
 
                     restaurantEmail.setError(null);
                     restaurantEmail.setErrorEnabled(false);
