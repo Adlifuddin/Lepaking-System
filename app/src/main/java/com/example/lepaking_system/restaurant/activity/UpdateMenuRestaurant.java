@@ -27,7 +27,7 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
 
     int position;
 
-    DatabaseReference reference;
+    DatabaseReference referenceMenu;
 
     String menuEmail, menuName, menuType, menuID;
     Float menuPrice;
@@ -42,7 +42,8 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
         MenuRestaurant menu = (MenuRestaurant) getIntent().getExtras().getSerializable("RESTAURANTMENU");
         menuEmail = menu.getEmail();
 
-        reference = FirebaseDatabase.getInstance().getReference("Menu").child(Email.encodeEmail(menuEmail));
+        referenceMenu = FirebaseDatabase.getInstance().getReference("Menu").child(Email.encodeEmail(menuEmail));
+
 
         //Hooks
         updateRestaurantMenuTypeSelection = findViewById(R.id.update_restaurant_menu_type_selection);
@@ -77,6 +78,7 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
 
         updateRestaurantMenuTypeSelection.setAdapter(arrayAdapter);
 
+
     }
 
     public void Update(View view) {
@@ -92,7 +94,7 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
     private boolean isMenuTypeChanged() {
         if(!menuType.equals(updateRestaurantMenuType.getEditText().getText().toString())){
 
-            reference.child(menuID).child("type").setValue(updateRestaurantMenuType.getEditText().getText().toString());
+            referenceMenu.child(menuID).child("type").setValue(updateRestaurantMenuType.getEditText().getText().toString());
             menuType = updateRestaurantMenuType.getEditText().getText().toString();
             return true;
         }
@@ -104,7 +106,7 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
     private boolean isMenuPriceChanged() {
         if (!String.valueOf(menuPrice).equals(updateRestaurantMenuPrice.getEditText().getText().toString()))
         {
-            reference.child(menuID).child("price").setValue(Float.parseFloat(updateRestaurantMenuPrice.getEditText().getText().toString()));
+            referenceMenu.child(menuID).child("price").setValue(Float.parseFloat(updateRestaurantMenuPrice.getEditText().getText().toString()));
             menuPrice = Float.parseFloat(updateRestaurantMenuPrice.getEditText().getText().toString());
             return true;
         } else {
@@ -115,7 +117,7 @@ public class UpdateMenuRestaurant extends AppCompatActivity {
     private boolean isMenuNameChanged() {
         if(!menuName.equals(updateRestaurantMenuName.getEditText().getText().toString())){
 
-            reference.child(menuID).child("name").setValue(updateRestaurantMenuName.getEditText().getText().toString());
+            referenceMenu.child(menuID).child("name").setValue(updateRestaurantMenuName.getEditText().getText().toString());
             menuName = updateRestaurantMenuName.getEditText().getText().toString();
             return true;
         }

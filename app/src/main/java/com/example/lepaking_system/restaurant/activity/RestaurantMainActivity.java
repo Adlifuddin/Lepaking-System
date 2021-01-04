@@ -489,6 +489,9 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
             }
         });
 
+        DatabaseReference referenceCurrentRestaurant = FirebaseDatabase.getInstance().getReference("Customer").child(customer_id);
+        referenceCurrentRestaurant.child("currentRest").setValue("null");
+
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -562,6 +565,10 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
 
             }
         });
+
+        DatabaseReference referenceCurrentRestaurant = FirebaseDatabase.getInstance().getReference("Customer").child(customer_id);
+        referenceCurrentRestaurant.child("currentRest").setValue(globalEmail);
+
 
 
         done_button.setOnClickListener(new View.OnClickListener() {
