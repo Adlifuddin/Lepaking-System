@@ -85,9 +85,11 @@ public class ProfileSetupActivity extends AppCompatActivity {
             FirebaseUser cust = FirebaseAuth.getInstance().getCurrentUser();
             id = cust.getUid();
 
+            String enteredRest = "null";
+
             //create student object
             CustomerInfo customer = new CustomerInfo(enteredName, enteredIC, enteredMobile, enteredGender, enteredStreetName,
-                    enteredPoscode, enteredCity, enteredState);
+                    enteredPoscode, enteredCity, enteredState, enteredRest);
 
             //save student in firebase
             custDb.child(id).setValue(customer);

@@ -10,13 +10,14 @@ public class CustomerInfo {
     private String poscode;
     private String city;
     private String state;
+    private String currentRest;
 
     //default constructor
     public CustomerInfo(){
     }
 
     //alternate constructor
-    public CustomerInfo(String name, String IC, String mobileNo, String gender, String streetName, String poscode, String city, String state) {
+    public CustomerInfo(String name, String IC, String mobileNo, String gender, String streetName, String poscode, String city, String state, String currentRest) {
         this.name = name;
         this.IC = IC;
         this.mobileNo = mobileNo;
@@ -25,6 +26,7 @@ public class CustomerInfo {
         this.poscode = poscode;
         this.city = city;
         this.state = state;
+        this.currentRest = currentRest;
     }
 
     //getter
@@ -58,5 +60,9 @@ public class CustomerInfo {
 
     public String getState() {
         return state;
+    }
+
+    public String getCurrentRest() {
+        return currentRest;
     }
 }
