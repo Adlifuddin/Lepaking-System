@@ -28,7 +28,8 @@
                 android:gravity="center_horizontal"
                 android:text="Name"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -47,7 +48,8 @@
                 android:id="@+id/customer_tracing_check_in_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date" />
+                android:text="Date"
+                android:textColor="@color/black"/>
 
             <Space
                 android:layout_width="10dp"
@@ -62,7 +64,8 @@
                 android:id="@+id/customer_tracing_check_in_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time" />
+                android:text="Time"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -81,7 +84,8 @@
                 android:id="@+id/customer_tracing_check_out_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date" />
+                android:text="Date"
+                android:textColor="@color/black"/>
 
             <Space
                 android:layout_width="10dp"
@@ -96,7 +100,8 @@
                 android:id="@+id/customer_tracing_check_out_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time" />
+                android:text="Time"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -115,7 +120,8 @@
                 android:id="@+id/customer_tracing_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email" />
+                android:text="Email"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -134,7 +140,8 @@
                 android:id="@+id/customer_tracing_phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Number" />
+                android:text="Phone Number"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -153,7 +160,8 @@
                 android:id="@+id/customer_tracing_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID" />
+                android:text="ID"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

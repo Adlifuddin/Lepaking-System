@@ -3,6 +3,7 @@ package com.example.lepaking_system.restaurant.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,6 +27,7 @@ import com.example.lepaking_system.restaurant.conversion.Email;
 import com.example.lepaking_system.restaurant.fragment.AddMenuRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ProfileRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ShowMenuRestaurant;
+import com.example.lepaking_system.restaurant.fragment.TakeOrder;
 import com.example.lepaking_system.restaurant.fragment.UpdateProfileRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ValidateCustomer;
 import com.example.lepaking_system.restaurant.fragment.ValidatePayment;
@@ -130,6 +133,10 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
             case R.id.nav_validate_payment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         passRestaurantProfileEmail_4()).commit();
+                break;
+            case R.id.nav_take_order:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        passRestaurantProfileEmail_5()).commit();
                 break;
             case R.id.nav_customer_tracing:
                 showDatePickerDialog();
@@ -321,37 +328,70 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
         return validatePayment;
     }
 
+    private TakeOrder passRestaurantProfileEmail_5() {
+
+        Bundle bundle = new Bundle();
+        bundle.putString("email", globalEmail);
+
+        TakeOrder takeOrder = new TakeOrder();
+        takeOrder.setArguments(bundle);
+        return takeOrder;
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         IntentResult result = IntentIntegrator.parseActivityResult(IntentIntegrator.REQUEST_CODE, resultCode, data);
         if (result != null) {
 
             if (result.getContents() != null) {
-                System.out.println(result.getContents());
-                String customerData[] = result.getContents().split(";");
-                String customer_id = customerData[0];
-                String customer_email = customerData[1];
-                String customer_name = customerData[2];
-                String customer_phone_number = customerData[3];
-                String customer_street_name = customerData[4];
-                int customer_poscode = Integer.parseInt(customerData[5]);
-                String customer_city = customerData[6];
-                String customer_state = customerData[7];
-                System.out.println("customer_id: " + customer_id);
-                System.out.println("customer_email: " + customer_email);
-                System.out.println("customer_name: " + customer_name);
-                System.out.println("customer_phone_number: " + customer_phone_number);
-                System.out.println("customer_street_name : " + customer_street_name);
-                System.out.println("customer_poscode : " + customer_poscode);
-                System.out.println("customer_city : " + customer_city);
-                System.out.println("customer_state : " + customer_state);
 
-                if (requestCode == 1) {
-                    ShowValidateCustomerDialog(customer_id, customer_email, customer_name, customer_phone_number, customer_street_name, customer_poscode, customer_city, customer_state);
-                } else if (requestCode == 2) {
-                    ShowValidatePaymentDialog(customer_id, customer_email, customer_name, customer_phone_number, customer_street_name, customer_poscode, customer_city, customer_state);
+                if(requestCode == 1 || requestCode == 2){
+
+                    String customerData[] = result.getContents().split(";");
+                    String customer_id = customerData[0];
+                    String customer_email = customerData[1];
+                    String customer_name = customerData[2];
+                    String customer_phone_number = customerData[3];
+                    String customer_street_name = customerData[4];
+                    int customer_poscode = Integer.parseInt(customerData[5]);
+                    String customer_city = customerData[6];
+                    String customer_state = customerData[7];
+                    System.out.println("customer_id: " + customer_id);
+                    System.out.println("customer_email: " + customer_email);
+                    System.out.println("customer_name: " + customer_name);
+                    System.out.println("customer_phone_number: " + customer_phone_number);
+                    System.out.println("customer_street_name : " + customer_street_name);
+                    System.out.println("customer_poscode : " + customer_poscode);
+                    System.out.println("customer_city : " + customer_city);
+                    System.out.println("customer_state : " + customer_state);
+
+                    if (requestCode == 1) {
+                        //qr code from validate customer
+                        ShowValidateCustomerDialog(customer_id, customer_email, customer_name, customer_phone_number, customer_street_name, customer_poscode, customer_city, customer_state);
+                    } else if (requestCode == 2) {
+                        //qr code from validate payment
+                        ShowValidatePaymentDialog(customer_id, customer_email, customer_name, customer_phone_number, customer_street_name, customer_poscode, customer_city, customer_state);
+                    }
                 }
+                else if(requestCode == 3){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage(result.getContents());
 
+                    builder.setTitle("Menu Order:");
+                    builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).setNegativeButton("Finish", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             } else {
                 Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();
             }
