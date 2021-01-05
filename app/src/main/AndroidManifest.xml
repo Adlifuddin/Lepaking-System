@@ -29,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileSetupActivity" />
+        <activity android:name=".recommendation.Restaurant_Display" />
         <activity android:name=".UserUpdateActivity" />
         <activity android:name=".SignupActivity" />
         <activity
