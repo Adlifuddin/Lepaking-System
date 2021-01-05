@@ -26,6 +26,7 @@ import com.example.lepaking_system.restaurant.conversion.Email;
 import com.example.lepaking_system.restaurant.fragment.AddMenuRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ProfileRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ShowMenuRestaurant;
+import com.example.lepaking_system.restaurant.fragment.TakeOrder;
 import com.example.lepaking_system.restaurant.fragment.UpdateProfileRestaurant;
 import com.example.lepaking_system.restaurant.fragment.ValidateCustomer;
 import com.example.lepaking_system.restaurant.fragment.ValidatePayment;
@@ -131,6 +132,10 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
             case R.id.nav_validate_payment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         passRestaurantProfileEmail_4()).commit();
+                break;
+            case R.id.nav_take_order:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        passRestaurantProfileEmail_5()).commit();
                 break;
             case R.id.nav_customer_tracing:
                 showDatePickerDialog();
@@ -323,6 +328,16 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
         return validatePayment;
     }
 
+    private TakeOrder passRestaurantProfileEmail_5() {
+
+        Bundle bundle = new Bundle();
+        bundle.putString("email", globalEmail);
+
+        TakeOrder takeOrder = new TakeOrder();
+        takeOrder.setArguments(bundle);
+        return takeOrder;
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         IntentResult result = IntentIntegrator.parseActivityResult(IntentIntegrator.REQUEST_CODE, resultCode, data);
@@ -357,6 +372,24 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
                         //qr code from validate payment
                         ShowValidatePaymentDialog(customer_id, customer_email, customer_name, customer_phone_number, customer_street_name, customer_poscode, customer_city, customer_state);
                     }
+                }
+                else if(requestCode == 3){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage(result.getContents());
+                    builder.setTitle("Customer's Order:");
+                    builder.setPositiveButton("Scan Again", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).setNegativeButton("Finish", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             } else {
                 Toast.makeText(this, "No Results", Toast.LENGTH_LONG).show();

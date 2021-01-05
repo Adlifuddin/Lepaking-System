@@ -37,6 +37,18 @@
 
         </item>
 
+        <item android:title="Order">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_take_order"
+                    android:icon="@drawable/ic_take_order"
+                    android:title="Take Order" />
+
+            </menu>
+
+        </item>
+
         <item android:title="Validation">
 
             <menu>
