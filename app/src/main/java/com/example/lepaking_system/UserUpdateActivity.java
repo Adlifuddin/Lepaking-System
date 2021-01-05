@@ -64,7 +64,7 @@ public class UserUpdateActivity extends AppCompatActivity {
                                                     openProfile();
                                                 }
                                                 else{
-                                                    Toast.makeText(UserUpdateActivity.this, "Fail Update", Toast.LENGTH_SHORT).show(); //display sucess
+                                                    Toast.makeText(UserUpdateActivity.this, "Fail Password Update", Toast.LENGTH_SHORT).show(); //display sucess
                                                 }
                                             }
                                         });

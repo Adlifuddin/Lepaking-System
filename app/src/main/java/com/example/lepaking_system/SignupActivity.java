@@ -63,7 +63,7 @@ public class SignupActivity extends AppCompatActivity {
                                     }
                                     //when unsuccessfull
                                     else{
-                                        Toast.makeText(SignupActivity.this, "Signup Error", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignupActivity.this, "Email has been used", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
