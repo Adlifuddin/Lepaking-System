@@ -177,6 +177,8 @@ public class UpdateProfileRestaurant extends Fragment {
 
         ArrayAdapter arrayTypeAdapter = new ArrayAdapter(getContext(), R.layout.option_for_restaurant, typeOption);
 
+        System.out.println("restaurant_type" + restaurant_type);
+
         //to make default value
         if(restaurant_type.equals("Cheap")){
             position2 = 0;
@@ -303,17 +305,17 @@ public class UpdateProfileRestaurant extends Fragment {
         String moderate = "P2";
         String expensive = "P3";
 
-        Cheap cheapRating = new Cheap(0);
-        Moderate moderateRating = new Moderate(0);
-        Expensive expensiveRating = new Expensive(0);
-
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(cheap).setValue(cheapRating);
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(moderate).setValue(moderateRating);
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(expensive).setValue(expensiveRating);
-
         if(!restaurant_menuPriceRange.equals(restaurantMenuPriceRange.getEditText().getText().toString())){
 
             referenceRestaurant.child(encodedRestaurantEmail).child("menuPriceRange").setValue(restaurantMenuPriceRange.getEditText().getText().toString());
+
+            Cheap cheapRating = new Cheap(0);
+            Moderate moderateRating = new Moderate(0);
+            Expensive expensiveRating = new Expensive(0);
+
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(cheap).setValue(cheapRating);
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(moderate).setValue(moderateRating);
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(expensive).setValue(expensiveRating);
 
             if(restaurantMenuPriceRange.getEditText().getText().toString().equals("Cheap")){
                 cheapRating.setRating(1);
@@ -342,19 +344,20 @@ public class UpdateProfileRestaurant extends Fragment {
         String indian = "T3";
         String western = "T4";
 
-        Chinese chineseRating = new Chinese(0);
-        Malay malayRating = new Malay(0);
-        Indian indianRating = new Indian(0);
-        Western westernRating = new Western(0);
-
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(chinese).setValue(chineseRating);
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(malay).setValue(malayRating);
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(indian).setValue(indianRating);
-        referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(western).setValue(westernRating);
 
         if(!restaurant_type.equals(restaurantType.getEditText().getText().toString())){
 
             referenceRestaurant.child(encodedRestaurantEmail).child("type").setValue(restaurantType.getEditText().getText().toString());
+            Chinese chineseRating = new Chinese(0);
+            Malay malayRating = new Malay(0);
+            Indian indianRating = new Indian(0);
+            Western westernRating = new Western(0);
+
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(chinese).setValue(chineseRating);
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(malay).setValue(malayRating);
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(indian).setValue(indianRating);
+            referenceRecommendationRestaurant.child(encodedRestaurantEmail).child(western).setValue(westernRating);
+
 
             if(restaurantType.getEditText().getText().toString().equals("Chinese")){
                 chineseRating.setRating(1);

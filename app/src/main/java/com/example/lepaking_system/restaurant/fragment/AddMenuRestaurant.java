@@ -126,7 +126,7 @@ public class AddMenuRestaurant extends Fragment {
                 startActivity(intent);
                 getActivity().finish();
             }
-        }, 1500);
+        }, 2000);
 
 
 
