@@ -1,56 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/userMenu"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".UserMenu">
 
-    <TextView
-        android:id="@+id/userSearch"
-        android:layout_width="112dp"
-        android:layout_height="37dp"
-        android:text="Menu"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineBot"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineTop"
-        app:layout_constraintVertical_bias="0.496" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLeft"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.05"/>
+        android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="391dp"
-        app:layout_constraintGuide_percent="0.95"/>
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="416dp"
+            android:layout_height="wrap_content"
+            android:background="#fccc2c"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingLeft="30dp"
+            android:paddingTop="40dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="6dp"
+            android:text="Welcome to"
+            android:textColor="#4A4343"
+            android:textColorHint="#C3B8B8"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.049">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.05"/>
+        </TextView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineBot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="715dp"
-        app:layout_constraintGuide_percent="0.95"/>
+        <TextView
+            android:id="@+id/restaurantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fccc2c"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingLeft="30dp"
+            android:textColor="#1E1E1E"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/street"
+            android:background="#fccc2c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingTop="26dp"
+            android:fontFamily="@font/arial"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/state"
+            android:background="#fccc2c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="115dp"
+            android:fontFamily="@font/arial"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/restaurant_show_menu_total_menu"
+            android:textColor="#4A4343"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingTop="26dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="18sp"
+            android:paddingLeft="30dp"
+            android:text="Total Menu(s)" />
+
+        <TextView
+            android:id="@+id/restaurant_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#1E1E1E"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingLeft="30dp"
+            android:text="Food" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurant_show_food_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/restaurant_drink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#1E1E1E"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingLeft="30dp"
+            android:text="Drink" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurant_show_drink_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+</ScrollView>

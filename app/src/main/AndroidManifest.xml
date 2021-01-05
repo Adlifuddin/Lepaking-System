@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LepakingSystem">
-        <activity android:name=".restaurant.activity.CustomerTracing"></activity>
+        <activity android:name=".DisplayMenuDetails" />
+        <activity android:name=".ui.main.DisplayRestaurantInfo" />
+        <activity android:name=".LinkPageMenu" />
+        <activity android:name=".restaurant.activity.CustomerTracing" />
         <activity android:name=".restaurant.activity.UpdateMenuRestaurant" />
         <activity
             android:name=".restaurant.activity.CaptureAct"
@@ -37,6 +40,10 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.LepakingSystem.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
