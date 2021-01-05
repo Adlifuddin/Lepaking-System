@@ -49,5 +49,13 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="search_here">Search here</string>
+    <string name="subaidah">Subaidah</string>
+    <string name="cheap">Cheap</string>
+    <string name="western">Western</string>
+    <string name="_20">20</string>
+    <string name="todo">TODO</string>
+    <string name="restaurant_id">Restaurant ID</string>
+    <string name="drinks">Drinks</string>
 
 </resources>
