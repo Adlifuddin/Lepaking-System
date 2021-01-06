@@ -474,6 +474,10 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
                         }
                     });
 
+                    DatabaseReference referenceOrder = rootNode.getReference("CurrentOrder").child(customer_id);
+                    referenceOrder.removeValue();
+
+
                     dialog.show();
                 }
                 else{
