@@ -30,8 +30,8 @@ import java.util.List;
 
 public class UserMenu extends Fragment {
 
-    private Button addcart;
-    private TextView nameofRestaurant, streetName, stateName, totalprice;
+    private Button addcart, dropcart;
+    private TextView nameofRestaurant, streetName, stateName, totalprice, orderAmount;
 
     List<MenuRestaurant> foodList;
     List<MenuRestaurant> drinkList;
@@ -57,6 +57,9 @@ public class UserMenu extends Fragment {
         recyclerView = v.findViewById(R.id.restaurant_show_food_recycler_view);
         recyclerView2 = v.findViewById(R.id.restaurant_show_drink_recycler_view);
         addcart = v.findViewById(R.id.restaurant_show_menu_update_button);
+        
+        dropcart = v.findViewById(R.id.drop_cart);
+        orderAmount = v.findViewById(R.id.restaurant_amount_menu);
 
         FirebaseUser cust = FirebaseAuth.getInstance().getCurrentUser();
         String id = cust.getUid();
@@ -147,46 +150,5 @@ public class UserMenu extends Fragment {
 
         return v;
     }
-
-//    @Override
-//    public void onStart() {
-//
-//        super.onStart();
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        foodList = new ArrayList<>();
-//        drinkList = new ArrayList<>();;
-//
-//        reference = FirebaseDatabase.getInstance().getReference("Menu(s)").child(Email.encodeEmail(restaurantEnteredEmail));;
-//
-//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot ds: snapshot.getChildren())
-//                {
-//                    MenuRestaurant menuList = ds.getValue(MenuRestaurant.class);
-//                    String typeFood = menuList.getType();
-//                    if(typeFood.equals("Food")){
-//                        foodList.add(menuList);
-//                    }
-//                    else if(typeFood.equals("Drink")){
-//                        System.out.println(menuList.getName());
-//                        drinkList.add(menuList);
-//                    }
-//                }
-//                foodAdapter = new DisplayMenuDetails(foodList);
-//                recyclerView.setAdapter(foodAdapter);
-//                drinkAdapter = new DisplayMenuDetails(drinkList);
-//                recyclerView2.setAdapter(drinkAdapter);
-//                totalMenu.setText("Total Menu(s): "+ snapshot.getChildrenCount());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
 }
