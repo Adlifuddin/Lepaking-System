@@ -55,6 +55,9 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
         viewHolderClass.menuName.setText(restaurantMenu.getName());
         viewHolderClass.menuPrice.setText("RM " + String.valueOf(roundTo2Decs(restaurantMenu.getPrice())));
         viewHolderClass.menuType.setText(restaurantMenu.getType());
+
+        viewHolderClass.dropCart.setEnabled(false);
+
         viewHolderClass.addCart.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -97,6 +100,8 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
                         if(!v){
 
                             reforder.child(restaurantMenu.getName()).setValue(1);
+                            viewHolderClass.orderAmount.setText("1");
+                            viewHolderClass.dropCart.setEnabled(true);
                         }
                         else{
 
@@ -104,6 +109,7 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
 
                             naik++;
                             reforder.child(restaurantMenu.getName()).setValue(naik);
+                            viewHolderClass.orderAmount.setText(String.valueOf(naik));
                         }
 
                         if(b == true){
@@ -118,7 +124,6 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
                             reforder.child("Total").setValue(restaurantMenu.getPrice());
                         }
 
-                        System.out.println(total);
                     }
 
                     @Override
@@ -126,9 +131,86 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
 
                     }
                 });
+            }
+        });
 
-//                passDataInterface.onDataReceived("Demo Data Sending By Fragment\n");
-//                System.out.println(restaurantMenu.getName());
+
+        viewHolderClass.dropCart.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                reforder.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        int z = 0;
+                        int count = (int) snapshot.getChildrenCount();
+                        String tgk[] = new String[count];
+                        int x = 0;
+
+                        //to loop and store in array
+                        for (DataSnapshot childSnapshot: snapshot.getChildren()) {
+
+                            tgk[x] = childSnapshot.getKey();
+                            x++;
+                        }
+
+                        boolean v = false;
+                        boolean b = false;
+
+                        while(z<count){
+
+                            if(tgk[z].equals("Total")){
+
+                                b = true;
+                            }
+
+                            if (tgk[z].equals(restaurantMenu.getName())) {
+
+                                v = true;
+                            }
+
+                            z++;
+                        }
+
+                        if(v){
+
+                            int naik = Integer.parseInt(String.valueOf(snapshot.child(restaurantMenu.getName()).getValue()));
+
+                            if(naik!=1){
+                                naik--;
+                                reforder.child(restaurantMenu.getName()).setValue(naik);
+                                viewHolderClass.orderAmount.setText(String.valueOf(naik));
+                            }
+                            else{
+                                reforder.child(restaurantMenu.getName()).removeValue();
+                                viewHolderClass.orderAmount.setText("0");
+
+                                viewHolderClass.dropCart.setEnabled(false);
+                            }
+                        }
+
+                        if(b == true){
+
+                            total = Float.parseFloat(String.valueOf(snapshot.child("Total").getValue()));
+                            total -= restaurantMenu.getPrice();
+
+                            if(total <= 0){
+                                reforder.removeValue();
+                            }
+                            else {
+                                reforder.child("Total").setValue(total);
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
@@ -141,8 +223,8 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
 
     public class ViewHolderClass extends RecyclerView.ViewHolder{
 
-        TextView menuName, menuPrice, menuType;
-        CardView addCart;
+        TextView menuName, menuPrice, menuType, orderAmount;
+        CardView addCart, dropCart;
 
         public ViewHolderClass(@NonNull View itemView) {
 
@@ -152,7 +234,8 @@ public class DisplayMenuDetails<PassDataInterface> extends RecyclerView.Adapter{
             menuPrice = itemView.findViewById(R.id.restaurant_show_menu_price);
             menuType = itemView.findViewById(R.id.restaurant_show_menu_type);
             addCart= itemView.findViewById(R.id.restaurant_show_menu_update_button);
-
+            dropCart= itemView.findViewById(R.id.drop_cart);
+            orderAmount= itemView.findViewById(R.id.restaurant_amount_menu);
         }
     }
     private float roundTo2Decs(float value) {
