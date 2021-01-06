@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Restaurant_Display extends AppCompatActivity {
 
     private ImageButton mSearchBtn;
@@ -72,10 +75,13 @@ public class Restaurant_Display extends AppCompatActivity {
                 r_name.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("name").getValue()));
                 r_price.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("menuPriceRange").getValue()));
                 r_type.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("type").getValue()));
-                r_address.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("streetName").getValue()));
+                r_address.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("streetName").getValue())
+                        + ", " + String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("city").getValue())
+                        + ", " + String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("poscode").getValue())
+                        + ", " + String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("state").getValue()));
                 r_phone.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("phoneNumber").getValue()));
                 r_customer.setText(String.valueOf(snapshot.child("Restaurant").child(finalRestaurant_ID).child("customerCounter").getValue()));
-                r_rating.setText(String.valueOf(snapshot.child("recommendation_restaurant").child(finalRestaurant_ID).child("R").child("value").getValue()));
+                r_rating.setText(String.valueOf(roundTo2Decs(Float.parseFloat(String.valueOf(snapshot.child("recommendation_restaurant").child(finalRestaurant_ID).child("R").child("value").getValue())))));
                 String rating_cus = "(" + String.valueOf(snapshot.child("recommendation_restaurant").child(finalRestaurant_ID).child("Total").child("value").getValue()) + ")";
                 r_rating_customer.setText(rating_cus);
             }
@@ -141,6 +147,12 @@ public class Restaurant_Display extends AppCompatActivity {
             restau_type.setText(String.valueOf(price));
         }
 
+    }
+
+    private float roundTo2Decs(float value) {
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.floatValue();
     }
 
 }

@@ -19,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
@@ -59,8 +62,10 @@ public class UserPayment extends Fragment {
 
                 for(int i = 0; i<count; i++){
 
-                    orders = orders + tgk[i] + " " + dataSnapshot.child(tgk[i]).getValue() + ";";
+                    orders = orders + tgk[i] + " " + roundTo2Decs(Float.parseFloat(String.valueOf(dataSnapshot.child(tgk[i]).getValue()))) + ";";
                 }
+//                System.out.println(orders);
+
 
                 QRGEncoder qrgEncoder = new QRGEncoder(orders, null, QRGContents.Type.TEXT, 500);
                 // Getting QR-Code as Bitmap
@@ -77,6 +82,12 @@ public class UserPayment extends Fragment {
         });
 
         return v;
+    }
+
+    private float roundTo2Decs(float value) {
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.floatValue();
     }
 
 
