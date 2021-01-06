@@ -86,12 +86,15 @@ public class UserMenu extends Fragment {
                 String currentRest = String.valueOf(dataSnapshot.child("currentRest").getValue().toString());
                 final String restaurantEnteredEmail = Email.encodeEmail(currentRest);
 
+                if(currentRest.equals("null")){
+                    ratingBar.setEnabled(false);
+                    rate_at_menu.setEnabled(false);
+                }
 
                 //for rating purposes
                 rate_at_menu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
 
                         int currentrate = (int) ratingBar.getRating();
 
