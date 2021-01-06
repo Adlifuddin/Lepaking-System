@@ -196,7 +196,8 @@ public class UserSearch extends Fragment {
                         }
                     });
                     System.out.println("1. WE RECOMMEND THIS RESTAURANT: " + restaurantID);
-                } else {
+                }
+                else {
 
                     float ratingtester = restaurantdata.P1 * userdata.P1 + restaurantdata.P2 * userdata.P2 + restaurantdata.P3 * userdata.P3 +
                             restaurantdata.T1 * userdata.T1 + restaurantdata.T2 * userdata.T2 + restaurantdata.T3 * userdata.T3 + restaurantdata.T4 * userdata.T4;
@@ -228,9 +229,25 @@ public class UserSearch extends Fragment {
                             }
                         });
                         //kena recommend this restaurant
-                        System.out.println("2. WE RECOMMEND THIS RESTAURANT: " + restaurantID);
+                        System.out.println("2. WE RECOMMEND THIS RESTAURANT: " + restaurantID + "WITH RATING OF " + ratingtester);
                     } else {
-                        System.out.println("3. WE DO NOT RECOMMEND THIS RESTAURANT: " + restaurantID);
+                        //kena recommend this restaurant
+                        DatabaseReference recommend_ref = databaseReference.child(restaurantID);
+                        recommend_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                recommend_name.setText("No Recommendation yet");
+                                recommend_price.setText("0");
+                                recommend_type.setText("");
+                                recommend_customer.setText("");
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        System.out.println("3. WE DO NOT RECOMMEND THIS RESTAURANT: " + restaurantID + "WITH RATING OF " + ratingtester);
                         recommendBased(userID);
                     }
 
