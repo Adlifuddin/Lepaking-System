@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/scan_qr_code_payment"/>
+        android:src="@drawable/scan_qr_code_payment_v2"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,6 +34,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Scan QR Code"
+        android:layout_gravity="center"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/validate_payment_minus_customer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Minus customer">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/validate_payment_minus_customer_button"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minus"
         android:layout_gravity="center"/>
 
 </LinearLayout>
