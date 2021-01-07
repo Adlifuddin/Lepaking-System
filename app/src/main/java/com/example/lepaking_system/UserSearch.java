@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -262,6 +264,7 @@ public class UserSearch extends Fragment {
 
 
     private void search_item(String searchRes) {
+
         Query firebaseSearchQuery = databaseReference.orderByChild("name").startAt(searchRes).endAt(searchRes + "\uf8ff");
 
         FirebaseRecyclerAdapter<Restaurant, UserSearch.RestViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Restaurant, UserSearch.RestViewHolder>(
@@ -319,8 +322,3 @@ public class UserSearch extends Fragment {
     }
 
 }
-
-//restaurant testing
-//semoga berjaya!
-//hello!
-//Faikal hensem

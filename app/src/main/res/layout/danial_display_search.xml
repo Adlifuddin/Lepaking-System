@@ -34,8 +34,8 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="410dp"
-        android:layout_height="181dp"
+        android:layout_width="421dp"
+        android:layout_height="221dp"
         android:background="#D54F4F"
         android:backgroundTint="#F1ECFD"
         app:layout_constraintBottom_toBottomOf="@+id/r_address"

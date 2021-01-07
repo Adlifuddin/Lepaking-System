@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LepakingSystem">
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".DisplayMenuDetails" />
         <activity android:name=".ui.main.DisplayRestaurantInfo" />
         <activity android:name=".LinkPageMenu" />
@@ -24,7 +25,7 @@
             android:theme="@style/Theme.LepakingSystem.NoActionBar" />
         <activity android:name=".restaurant.activity.SignUpRestaurant" />
         <activity android:name=".restaurant.activity.LoginRestaurant" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LepakingWelcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -15,14 +15,14 @@
             android:id="@+id/welcome"
             android:layout_width="416dp"
             android:layout_height="wrap_content"
-            android:background="#fccc2c"
+            android:background="#cd8de5"
             android:fontFamily="@font/roboto_medium"
             android:paddingLeft="30dp"
             android:paddingTop="40dp"
             android:paddingRight="16dp"
             android:paddingBottom="6dp"
             android:text="Welcome to"
-            android:textColor="#4A4343"
+            android:textColor="#EDEDED"
             android:textColorHint="#C3B8B8"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -38,57 +38,69 @@
             android:id="@+id/restaurantName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fccc2c"
+            android:background="#cd8de5"
             android:fontFamily="@font/roboto_bold"
             android:paddingLeft="30dp"
-            android:textColor="#1E1E1E"
+            android:textColor="#000000"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
         <TextView
             android:id="@+id/street"
-            android:background="#fccc2c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#cd8de5"
+            android:fontFamily="@font/arial"
             android:paddingLeft="30dp"
             android:paddingTop="26dp"
-            android:fontFamily="@font/arial"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/state"
-            android:background="#fccc2c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="115dp"
+            android:background="#cd8de5"
             android:fontFamily="@font/arial"
+            android:paddingLeft="115dp"
+            android:paddingBottom="25dp"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingBottom="20dp"/>
+            android:textStyle="bold" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/displayRate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="Please rate our restaurant"
+            android:textSize="18sp"
+            android:paddingTop="8pt"/>
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:stepSize="1" />
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_marginLeft="36pt"
+            android:layout_marginRight="34pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="6pt"
+            android:numStars="5"
+            android:stepSize="1"
+            android:progressTint="#FFD700"/>
 
-            <Button
-                android:id="@+id/rate_button_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rate" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/rate_button_menu"
+            android:layout_width="101dp"
+            android:layout_marginTop="5pt"
+            android:layout_height="47dp"
+            android:layout_marginLeft="67pt"
+            android:layout_marginRight="80pt"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Rate" />
 
         <TextView
             android:id="@+id/restaurant_show_menu_total_menu"
@@ -132,6 +144,7 @@
             android:textSize="20sp"
             android:fontFamily="@font/roboto_medium"
             android:paddingLeft="30dp"
+            android:paddingTop="20dp"
             android:text="Drink" />
 
         <androidx.recyclerview.widget.RecyclerView
