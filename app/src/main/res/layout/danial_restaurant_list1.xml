@@ -36,7 +36,9 @@
         android:layout_width="263dp"
         android:layout_height="33dp"
         android:layout_marginTop="16dp"
+        android:alpha="0.7"
         android:text="@string/subaidah"
+        android:textColor="#E6000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"
@@ -45,8 +47,9 @@
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="18dp"
-        android:layout_height="17dp"
+        android:layout_width="23dp"
+        android:layout_height="20dp"
+        android:alpha="0.7"
         android:foregroundTint="#00FFFFFF"
         android:foregroundTintMode="add"
         android:hapticFeedbackEnabled="false"
@@ -55,7 +58,7 @@
         app:layout_constraintStart_toStartOf="@+id/customerNo1_txt"
         app:layout_constraintTop_toBottomOf="@+id/customerNo1_txt"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_restaurant_validate_customer" />
+        app:srcCompat="@drawable/users" />
 
     <TextView
         android:id="@+id/customerNo1_txt"
@@ -76,11 +79,12 @@
         android:layout_height="26dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:alpha="0.7"
         android:contentDescription="@string/todo"
         android:translationY="-2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_name1_txt"
-        app:srcCompat="@drawable/ic_restaurant_menu_price_range" />
+        app:srcCompat="@drawable/dollar" />
 
     <TextView
         android:id="@+id/price1_txt"
@@ -88,20 +92,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/cheap"
+        android:textColor="#B3000000"
         android:translationX="2dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_name1_txt" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="27dp"
+        android:layout_height="26dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
+        android:alpha="0.7"
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toEndOf="@+id/price1_txt"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_name1_txt"
-        app:srcCompat="@drawable/ic_restaurant_type" />
+        app:srcCompat="@drawable/chickenleg" />
 
     <TextView
         android:id="@+id/type1_txt"
@@ -110,6 +116,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
         android:text="@string/western"
+        android:textColor="#B3000000"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_name1_txt" />
 

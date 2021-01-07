@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lepaking-System</string>
+    <string name="app_name">Lepaking</string>
     <string name="tab_text_1">Checkin</string>
     <string name="tab_text_2">Search</string>
     <string name="tab_text_3">Menu</string>
