@@ -53,7 +53,6 @@ public class ProfileSetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addCustomer();
-                openMain();
             }
         });
     }
@@ -87,39 +86,49 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
             String enteredRest = "null";
 
-            //create student object
-            CustomerInfo customer = new CustomerInfo(enteredName, enteredIC, enteredMobile, enteredGender, enteredStreetName,
-                    enteredPoscode, enteredCity, enteredState, enteredRest);
+            //validate ic, phone, poscode
+            boolean validateIC = icValidation(enteredIC);
+            boolean validatePhone = phoneValidation(enteredMobile);
+            boolean validatePoscode = poscodeValidation(enteredPoscode);
 
-            //save student in firebase
-            custDb.child(id).setValue(customer);
+            if(validateIC && validatePhone && validatePoscode){
+                //create student object
+                CustomerInfo customer = new CustomerInfo(enteredName, enteredIC, enteredMobile, enteredGender, enteredStreetName,
+                        enteredPoscode, enteredCity, enteredState, enteredRest);
 
-            //Add recommendation customer
-            custRecDb = FirebaseDatabase.getInstance().getReference("Recommendation_Customer").child(id);
+                //save student in firebase
+                custDb.child(id).setValue(customer);
 
-            custRecDb.child("P1").child("rating").setValue("0");
-            custRecDb.child("P1").child("restaurant_number").setValue("0");
+                //Add recommendation customer
+                custRecDb = FirebaseDatabase.getInstance().getReference("Recommendation_Customer").child(id);
 
-            custRecDb.child("P2").child("rating").setValue("0");
-            custRecDb.child("P2").child("restaurant_number").setValue("0");
+                custRecDb.child("P1").child("rating").setValue("0");
+                custRecDb.child("P1").child("restaurant_number").setValue("0");
 
-            custRecDb.child("P3").child("rating").setValue("0");
-            custRecDb.child("P3").child("restaurant_number").setValue("0");
+                custRecDb.child("P2").child("rating").setValue("0");
+                custRecDb.child("P2").child("restaurant_number").setValue("0");
 
-            custRecDb.child("T1").child("rating").setValue("0");
-            custRecDb.child("T1").child("restaurant_number").setValue("0");
+                custRecDb.child("P3").child("rating").setValue("0");
+                custRecDb.child("P3").child("restaurant_number").setValue("0");
 
-            custRecDb.child("T2").child("rating").setValue("0");
-            custRecDb.child("T2").child("restaurant_number").setValue("0");
+                custRecDb.child("T1").child("rating").setValue("0");
+                custRecDb.child("T1").child("restaurant_number").setValue("0");
 
-            custRecDb.child("T3").child("rating").setValue("0");
-            custRecDb.child("T3").child("restaurant_number").setValue("0");
+                custRecDb.child("T2").child("rating").setValue("0");
+                custRecDb.child("T2").child("restaurant_number").setValue("0");
 
-            custRecDb.child("T4").child("rating").setValue("0");
-            custRecDb.child("T4").child("restaurant_number").setValue("0");
+                custRecDb.child("T3").child("rating").setValue("0");
+                custRecDb.child("T3").child("restaurant_number").setValue("0");
 
-            //display toast
-            Toast.makeText(this, "Profile Success", Toast.LENGTH_LONG).show();
+                custRecDb.child("T4").child("rating").setValue("0");
+                custRecDb.child("T4").child("restaurant_number").setValue("0");
+
+                //display toast
+                Toast.makeText(this, "Profile Success", Toast.LENGTH_LONG).show();
+
+                openMain();
+            }
+
         } else {
             Toast.makeText(this, "Profile Error", Toast.LENGTH_LONG).show();
         }
@@ -130,6 +139,51 @@ public class ProfileSetupActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    //function for ic validation
+    public Boolean icValidation(String enteredIC){
+        boolean test = true;
+        if(enteredIC.length() != 12){
+            userIc.setError("Invalid IC");
+            test = false;
+        }
+        else{
+            userIc.setError(null);
+            test=true;
+        }
+
+        return test;
+    }
+
+    //function for ic validation
+    public Boolean phoneValidation(String enteredPhone){
+        boolean test = true;
+        if(enteredPhone.length() < 10 || enteredPhone.length() > 11){
+            userPhone.setError("Invalid Phone Number");
+            test = false;
+        }
+        else{
+            userPhone.setError(null);
+            test=true;
+        }
+
+        return test;
+    }
+
+    //function for ic validation
+    public Boolean poscodeValidation(String enteredPoscode){
+        boolean test = true;
+        if(enteredPoscode.length() != 5){
+            poscode.setError("Invalid Poscode");
+            test = false;
+        }
+        else{
+            poscode.setError(null);
+            test=true;
+        }
+
+        return test;
     }
 
 }
