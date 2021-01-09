@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileRestaurant extends Fragment {
 
     //Variables for elements
-    TextInputLayout phoneNumber, streetName, poscode, city, state, password, menuPriceRange, type;
+    TextInputLayout phoneNumber, streetName, poscode, city, state, password, menuPriceRange, type, restaurantCapacity;
     TextView name, email, id, noOfCustomer, noOfMenu;
 
     String restaurant_email;
@@ -50,6 +50,7 @@ public class ProfileRestaurant extends Fragment {
         password = root.findViewById(R.id.restaurant_password_profile);
         menuPriceRange = root.findViewById(R.id.restaurant_menu_price_range_profile);
         type = root.findViewById(R.id.restaurant_type_profile);
+        restaurantCapacity = root.findViewById(R.id.restaurant_capacity);
 
         showAllRestaurantData();
 
@@ -83,6 +84,8 @@ public class ProfileRestaurant extends Fragment {
                     String typeFromDB = snapshot.child(encodedRestaurantEmail).child("type").getValue(String.class);
                     String idFromDB = snapshot.child(encodedRestaurantEmail).child("id").getValue(String.class);
 
+                    int capacityFromDB = snapshot.child(encodedRestaurantEmail).child("restaurantCapacity").getValue(int.class);
+
                     name.setText(nameFromDB);
                     email.setText(emailFromDB);
                     id.setText(idFromDB);
@@ -100,6 +103,7 @@ public class ProfileRestaurant extends Fragment {
                     }
                     menuPriceRange.getEditText().setText(menuPriceRangeFromDB);
                     type.getEditText().setText(typeFromDB);
+                    restaurantCapacity.getEditText().setText("" + capacityFromDB);
                 }
             }
 

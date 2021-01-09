@@ -40,6 +40,8 @@ public class SignUpRestaurant extends AppCompatActivity {
     //Variable for text input layout
     private TextInputLayout restaurantName, restaurantEmail, restaurantPassword, restaurantPhoneNumber, restaurantStreetName, restaurantPostcode, restaurantCity, restaurantState, restaurantMenuPriceRange, restaurantType;
 
+    private TextInputLayout restaurantCapacity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,8 @@ public class SignUpRestaurant extends AppCompatActivity {
         stateSelection = findViewById(R.id.restaurant_select_state_sign_up);
         menuPriceRangeSelection = findViewById(R.id.restaurant_select_menu_price_range_sign_up);
         typeSelection = findViewById(R.id.restaurant_select_type_sign_up);
+
+        restaurantCapacity = findViewById(R.id.restaurant_capacity_number);
 
         //state option
         String[] stateOption = {"Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan",
@@ -150,6 +154,8 @@ public class SignUpRestaurant extends AppCompatActivity {
                     int customerCounter = 0;
                     int menuCounter = 0;
 
+                    int capacity = Integer.parseInt(restaurantCapacity.getEditText().getText().toString());
+
                     String cheap = "P1";
                     String moderate = "P2";
                     String expensive = "P3";
@@ -182,7 +188,8 @@ public class SignUpRestaurant extends AppCompatActivity {
 
                     Restaurant addNewRestaurant = new Restaurant();
                     try {
-                        addNewRestaurant = new Restaurant(id, name, email, AESCrypt.encrypt(password), phoneNumber, streetName, postcode, city, state, customerCounter, menuCounter, menuPriceRange, type);
+                        addNewRestaurant = new Restaurant(id, name, email, AESCrypt.encrypt(password), phoneNumber, streetName, postcode, city,
+                                state, customerCounter, menuCounter, menuPriceRange, type, capacity);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

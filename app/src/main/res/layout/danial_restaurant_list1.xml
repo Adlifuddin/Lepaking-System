@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/imageView14"
-        android:layout_width="69dp"
-        android:layout_height="80dp"
+        android:layout_width="79dp"
+        android:layout_height="81dp"
         android:background="#FFFFFF"
         android:backgroundTint="#7054B1"
         app:layout_constraintBottom_toBottomOf="@+id/restaurant_link"
@@ -54,8 +54,8 @@
         android:foregroundTintMode="add"
         android:hapticFeedbackEnabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/restaurant_link"
-        app:layout_constraintEnd_toEndOf="@+id/customerNo1_txt"
-        app:layout_constraintStart_toStartOf="@+id/customerNo1_txt"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintStart_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/customerNo1_txt"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/users" />
@@ -65,13 +65,27 @@
         android:layout_width="40dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="@string/_20"
+        android:text="20"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="@+id/imageView14"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/customerNo1_txt2"
+        android:layout_width="31dp"
+        android:layout_height="17dp"
+        android:text="/ 20"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/customerNo1_txt"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/customerNo1_txt" />
 
     <ImageView
         android:id="@+id/imageView"
