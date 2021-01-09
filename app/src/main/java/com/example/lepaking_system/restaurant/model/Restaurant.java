@@ -10,11 +10,13 @@ public class Restaurant {
     int menuCounter = 0;
     String menuPriceRange;
     String type;
+    int restaurantCapacity = 0;
 
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, String email, String password, String phoneNumber, String streetName, int postcode, String city, String state, int customerCounter, int menuCounter, String menuPriceRange, String type) {
+    public Restaurant(String id, String name, String email, String password, String phoneNumber, String streetName, int postcode, String city,
+                      String state, int customerCounter, int menuCounter, String menuPriceRange, String type, int restaurantCapacity) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -28,6 +30,15 @@ public class Restaurant {
         this.menuCounter = menuCounter;
         this.menuPriceRange = menuPriceRange;
         this.type = type;
+        this.restaurantCapacity = restaurantCapacity;
+    }
+
+    public int getRestaurantCapacity() {
+        return restaurantCapacity;
+    }
+
+    public void setRestaurantCapacity(int restaurantCapacity) {
+        this.restaurantCapacity = restaurantCapacity;
     }
 
     public String getId() {

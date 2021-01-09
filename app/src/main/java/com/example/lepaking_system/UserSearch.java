@@ -39,7 +39,7 @@ public class UserSearch extends Fragment {
     private RecyclerView result_list;
     private DatabaseReference databaseReference;
     private static Context mContext;
-    private TextView recommend_name, recommend_price, recommend_type, recommend_customer;
+    private TextView recommend_name, recommend_price, recommend_type, recommend_customer,recommend_capacity;
     
     @Nullable
     @Override
@@ -58,6 +58,7 @@ public class UserSearch extends Fragment {
         recommend_price = (TextView) v.findViewById(R.id.recommend_price);
         recommend_type = (TextView) v.findViewById(R.id.recommend_type);
         recommend_customer = (TextView) v.findViewById(R.id.recommend_cus);
+        recommend_capacity = (TextView) v.findViewById(R.id.recommend_cus2);
         recommend_btn = (ImageButton) v.findViewById(R.id.recommend_btn);
         //recommend_name.setText(databaseReference.child(Productkey).child("name").getKey());
 
@@ -182,6 +183,7 @@ public class UserSearch extends Fragment {
                             recommend_price.setText(String.valueOf(snapshot.child("menuPriceRange").getValue()));
                             recommend_type.setText(String.valueOf(snapshot.child("type").getValue()));
                             recommend_customer.setText(String.valueOf(snapshot.child("customerCounter").getValue()));
+                            recommend_capacity.setText("/ " + String.valueOf(snapshot.child("restaurantCapacity").getValue()));
                             recommend_btn.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -276,7 +278,7 @@ public class UserSearch extends Fragment {
             @Override
             protected void populateViewHolder(UserSearch.RestViewHolder restViewHolder, Restaurant restaurant, int i) {
 
-                restViewHolder.setDetails(getActivity().getApplicationContext(), restaurant.getEmail(), restaurant.getName(), restaurant.getType(), restaurant.getMenuPriceRange(), String.valueOf(restaurant.getCustomerCounter()));
+                restViewHolder.setDetails(restaurant.getRestaurantCapacity(), getActivity().getApplicationContext(), restaurant.getEmail(), restaurant.getName(), restaurant.getType(), restaurant.getMenuPriceRange(), String.valueOf(restaurant.getCustomerCounter()));
             }
         };
 
@@ -289,18 +291,20 @@ public class UserSearch extends Fragment {
             super(itemView);
             mView = itemView;
         }
-        public void setDetails(Context ctx, String restauEmail, String restauname, String restautype, String restauprice, String restaucustomer){
+        public void setDetails(int capacity, Context ctx, String restauEmail, String restauname, String restautype, String restauprice, String restaucustomer){
 
             TextView restau_name = (TextView) mView.findViewById(R.id.restaurant_name1_txt);
             TextView restau_type = (TextView) mView.findViewById(R.id.type1_txt);
             TextView restau_price = (TextView) mView.findViewById(R.id.price1_txt);
             TextView restau_customer = (TextView) mView.findViewById(R.id.customerNo1_txt);
             ImageButton restau_link = (ImageButton) mView.findViewById(R.id.restaurant_link);
+            TextView restau_capacity = (TextView) mView.findViewById(R.id.customerNo1_txt2);
 
             restau_name.setText(restauname);
             restau_type.setText(restautype);
             restau_price.setText(restauprice);
             restau_customer.setText(restaucustomer);
+            restau_capacity.setText("/ " + capacity);
 
             restau_link.setOnClickListener(new View.OnClickListener() {
                 @Override

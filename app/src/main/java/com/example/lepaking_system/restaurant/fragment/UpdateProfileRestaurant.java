@@ -39,6 +39,7 @@ public class UpdateProfileRestaurant extends Fragment {
 
     //Variables for elements
     TextInputLayout restaurantID, restaurantName, restaurantEmail, restaurantPassword, restaurantPhoneNumber, restaurantStreetName, restaurantPostcode, restaurantCity, restaurantState, restaurantMenuPriceRange, restaurantType;;
+    TextInputLayout restaurantCapacity;
     //Variables for drop down list for state Selection
     AutoCompleteTextView stateSelection, menuPriceRangeSelection, typeSelection;;
     //Variable for Button
@@ -49,6 +50,8 @@ public class UpdateProfileRestaurant extends Fragment {
     String restaurant_email, restaurant_name, restaurant_password, restaurant_phoneNumber,
             restaurant_streetName, restaurant_city, restaurant_state, restaurant_id, restaurant_menuPriceRange, restaurant_type;
     int restaurant_postcode;
+
+    int restaurant_capacity;
 
     DatabaseReference referenceRestaurant, referenceRecommendationRestaurant;
 
@@ -87,7 +90,7 @@ public class UpdateProfileRestaurant extends Fragment {
         restaurantType = root.findViewById(R.id.restaurant_type_update_profile);
         menuPriceRangeSelection = root.findViewById(R.id.restaurant_select_menu_price_range_update_profile);
         typeSelection = root.findViewById(R.id.restaurant_select_type_update_profile);
-
+        restaurantCapacity = root.findViewById(R.id.restaurant_update_capacity_number);
 
         showRestaurantDataToBeUpdated();
 
@@ -209,7 +212,7 @@ public class UpdateProfileRestaurant extends Fragment {
     }
 
     private void update() {
-        if(isNameChanged()  |isPhoneNumberChanged() | isStreetNameChanged() | isPoscodeChanged() | isCityChanged() | isStateChanged() | isMenuPriceRangeChanged() | isTypeChanged() | isPasswordChanged()){
+        if(isNameChanged()  |isPhoneNumberChanged() | isStreetNameChanged() | isPoscodeChanged() | isCityChanged() | isStateChanged() | isMenuPriceRangeChanged() | isTypeChanged() | isPasswordChanged() | isCapacityChanged()){
             Toast.makeText(getContext(), "Data has been successfully updated!", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(getActivity(), RestaurantMainActivity.class);
@@ -244,6 +247,18 @@ public class UpdateProfileRestaurant extends Fragment {
 
             referenceRestaurant.child(encodedRestaurantEmail).child("phoneNumber").setValue(restaurantPhoneNumber.getEditText().getText().toString());
             restaurant_phoneNumber = restaurantPhoneNumber.getEditText().getText().toString();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    private boolean isCapacityChanged() {
+        if(restaurant_capacity!=Integer.parseInt(restaurantCapacity.getEditText().getText().toString())){
+
+            referenceRestaurant.child(encodedRestaurantEmail).child("restaurantCapacity").setValue(Integer.parseInt(restaurantCapacity.getEditText().getText().toString()));
+            restaurant_capacity = Integer.parseInt(restaurantCapacity.getEditText().getText().toString());
             return true;
         }
         else{
@@ -420,6 +435,8 @@ public class UpdateProfileRestaurant extends Fragment {
                     restaurant_menuPriceRange = snapshot.child(encodedRestaurantEmail).child("menuPriceRange").getValue(String.class);
                     restaurant_type = snapshot.child(encodedRestaurantEmail).child("type").getValue(String.class);
 
+                    restaurant_capacity = snapshot.child(encodedRestaurantEmail).child("restaurantCapacity").getValue(int.class);
+
                     restaurantName.getEditText().setText(restaurant_name);
                     restaurantEmail.getEditText().setText(restaurant_email);
                     restaurantID.getEditText().setText(restaurant_id);
@@ -427,6 +444,8 @@ public class UpdateProfileRestaurant extends Fragment {
                     restaurantStreetName.getEditText().setText(restaurant_streetName);
                     restaurantPostcode.getEditText().setText("" + restaurant_postcode);
                     restaurantCity.getEditText().setText(restaurant_city);
+
+                    restaurantCapacity.getEditText().setText("" + restaurant_capacity);
                     try {
                         restaurantPassword.getEditText().setText(AESCrypt.decrypt(restaurant_password));
                     } catch (Exception e) {

@@ -123,8 +123,9 @@
         android:id="@+id/recommend_cus"
         android:layout_width="53dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="32dp"
         android:text="20"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textSize="45sp"
         android:textStyle="bold"
@@ -133,12 +134,26 @@
         app:layout_constraintTop_toTopOf="@+id/image111"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/recommend_cus2"
+        android:layout_width="30dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="8dp"
+        android:text="/ 20"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/image111"
+        app:layout_constraintEnd_toEndOf="@+id/image111"
+        app:layout_constraintTop_toTopOf="@+id/image111"
+        app:layout_constraintVertical_bias="0.563" />
+
     <ImageView
         android:id="@+id/imageView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/image111"
-        app:layout_constraintEnd_toEndOf="@+id/recommend_cus"
+        app:layout_constraintEnd_toEndOf="@+id/recommend_cus2"
         app:layout_constraintStart_toStartOf="@+id/recommend_cus"
         app:layout_constraintTop_toBottomOf="@+id/recommend_cus"
         app:layout_constraintVertical_bias="0.47"
