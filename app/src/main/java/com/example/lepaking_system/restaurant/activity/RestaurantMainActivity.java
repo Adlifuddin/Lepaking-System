@@ -178,7 +178,7 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String day ="";
+        String day = "";
         String formatMonth ="";
         if(dayOfMonth == 1){
             day = "01";
@@ -206,6 +206,9 @@ public class RestaurantMainActivity extends AppCompatActivity implements Navigat
         }
         else if(dayOfMonth == 9){
             day = "09";
+        }
+        else{
+            day = String.valueOf(dayOfMonth);
         }
 
         if(month == 0){
