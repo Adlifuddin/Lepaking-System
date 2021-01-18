@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignupActivity extends AppCompatActivity {
 
-    private Button nextButton; //initialize button
+    private Button nextButton, backButton; //initialize button
     private EditText inputEmail, inputPass; //initialize edittext
 
     FirebaseAuth userAuth; //initialize firebase authentication
@@ -77,11 +77,26 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+        backButton = (Button) findViewById(R.id.backLoginButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backLogin();
+            }
+        });
     }
 
     //function to change to profile page
     public void openProfile(String email){
         Intent intent = new Intent(this, ProfileSetupActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    //function to change to login page
+    public void backLogin(){
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
